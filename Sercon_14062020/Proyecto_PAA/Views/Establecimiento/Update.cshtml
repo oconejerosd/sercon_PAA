@@ -1,0 +1,41 @@
+﻿@model Proyecto_PAA.ViewModels.EstablecimientoViewModel
+@{
+    ViewBag.Title = "Registro de Establecimientos";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>Registro de Establecimiento</h3>
+    </div>
+    <div class="card-body">
+        <form action="/establecimiento/Update" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="EstablecimientoId" value="@Model.EstablecimientoId" class="form-control" />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>RBD:</label>
+                <input type="text" name="EstablecimientoRbd" value="@Model.EstablecimientoRbd" class="form-control" />
+                @Html.ValidationMessageFor(m => m.EstablecimientoRbd, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Nombre Establecimiento:</label>
+                <input type="text" name="EstablecimientoNombre" value="@Model.EstablecimientoNombre" class="form-control" />
+                @Html.ValidationMessageFor(m => m.EstablecimientoNombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Direccion Establecimiento:</label>
+                <input type="text" name="EstablecimientoDirecccion" value="@Model.EstablecimientoDirecccion" class="form-control" />
+                @Html.ValidationMessageFor(m => m.EstablecimientoDirecccion, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Telefono Establecimiento:</label>
+                <input type="text" name="EstablecimientoFono" value="@Model.EstablecimientoFono" class="form-control" />
+                @Html.ValidationMessageFor(m => m.EstablecimientoFono, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Guardar <i class="fa fa-save"></i></button>
+            </div>
+
+        </form>
+    </div>
+</div>
