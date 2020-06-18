@@ -132,7 +132,9 @@
     <Compile Include="Controllers\EstablecimientoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RequerimientoController.cs" />
     <Compile Include="Controllers\TecnicoController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -141,12 +143,17 @@
     <Compile Include="Migrations\202006160505320_iniciosistema.Designer.cs">
       <DependentUpon>202006160505320_iniciosistema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006180438300_creacion tabla requerimientos.cs" />
+    <Compile Include="Migrations\202006180438300_creacion tabla requerimientos.Designer.cs">
+      <DependentUpon>202006180438300_creacion tabla requerimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Establecimiento.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Requerimiento.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
@@ -155,6 +162,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProductsViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\RequerimientoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -173,6 +181,9 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Establecimiento\Index.cshtml" />
     <Content Include="Views\Establecimiento\Update.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Requerimiento\Index.cshtml" />
+    <Content Include="Views\Requerimiento\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,6 +197,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006160505320_iniciosistema.resx">
       <DependentUpon>202006160505320_iniciosistema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006180438300_creacion tabla requerimientos.resx">
+      <DependentUpon>202006180438300_creacion tabla requerimientos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -15,13 +15,23 @@ namespace Proyecto_PAA.Controllers
 
         public AuthController()
         {
-            db = new ApplicationDbContext();
+            db = new ApplicationDbContext(); // Graba en la BD
         }
         // GET: Auth
-        public ActionResult Index()
+        public ActionResult Index(string q)
         {
-            LlenarCbEstablecimientos();
-            return View();
+            var usuarios = db.Users.OrderBy(x => x.UserId).ToList();
+            RegisterViewModel vm = new RegisterViewModel();
+            vm.Users = usuarios;
+            //LlenarCbEstablecimientos();
+            return View(vm);
+        }
+        public ActionResult Crear()
+        {
+            RegisterViewModel vm = new RegisterViewModel();
+            var usuarios = db.Users.OrderBy(x => x.FirstName).ToList();
+            vm.Users = usuarios;
+            return View(vm);
         }
         [HttpGet]
         public ActionResult Register()
@@ -62,7 +72,8 @@ namespace Proyecto_PAA.Controllers
                 }
                 db.Users.Add(user);
                 db.SaveChanges(); // guarda los cambios
-                var userRole = new UserRole {
+                var userRole = new UserRole
+                {
                     UserId = user.UserId,
                     RoleId = role.RoleId
                 };
@@ -72,13 +83,16 @@ namespace Proyecto_PAA.Controllers
                 TempData["SuccessMessage"] = "Usuario creado correctamente";
                 if (role.RoleName == StringHelper.ROLE_TECH)
                 {
-                    return RedirectToAction("Index", "Tecnico");
+                    return RedirectToAction("Index", "Admin");
                 }
                 if (role.RoleName == StringHelper.ROLE_ADMINISTRATOR)
                 {
                     return RedirectToAction("Index", "Admin");
                 }
-                return RedirectToAction("Index", "User"); // Deben redirigir al listado de usuarios
+                if (role.RoleName == StringHelper.ROLE_CLIENT)
+                {
+                    return RedirectToAction("Index", "User");
+                }
             }
 
 
@@ -141,7 +155,7 @@ namespace Proyecto_PAA.Controllers
                     {
                         return RedirectToAction("Index", "Admin");
                     }
-                    return RedirectToAction("Index", "Home"); //json
+                    return RedirectToAction("Index", "User"); //json
                 }
 
                 TempData["ErrorMessage"] = "Inicio de sesión incorrecto";

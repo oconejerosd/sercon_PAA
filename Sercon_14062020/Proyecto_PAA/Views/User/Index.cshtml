@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <h3 align="center">Ingreso de Ticket</h3>
+        </div>
+        <div class="card-body">
+            <form action="/establecimiento/Crear" method="post">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label>Tipo de Requerimiento:</label>
+                    <input type="text" name="EstablecimientoRbd" value="@Model.EstablecimientoRbd" class="form-control" />
+                    @Html.ValidationMessageFor(m => m.EstablecimientoRbd, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label>Asunto Ticket:</label>
+                    <input type="text" name="EstablecimientoDirecccion" value="@Model.EstablecimientoDirecccion" class="form-control" />
+                    @Html.ValidationMessageFor(m => m.EstablecimientoDirecccion, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label>Detalle Ticket:</label>
+                    <input type="text" name="EstablecimientoFono" value="@Model.EstablecimientoFono" class="form-control" />
+                    @Html.ValidationMessageFor(m => m.EstablecimientoFono, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block">Guardar <i class="fa fa-save"></i></button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+
+        <form action="ticket2.html" method="post">
+            <div class="form-group row">
+                <br>
+                <label for="asunto_ticket" class="col-md-4 col-form-label text-md-right">Tipo de Requerimiento</label>
+                <div class="col-md-6">
+                    <select id="selectbasic" name="selectbasic" class="form-control">
+                        <option>Internet</option>
+                        <option>Equipamiento</option>
+                        <option>Plataformas</option>
+                        <option>Redes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="asunto_ticket" class="col-md-4 col-form-label text-md-right">Asunto de Ticket</label>
+                <div class="col-md-6">
+                    <input type="text" id="asunto_ticket" class="form-control" name="asunto_ticket" required autofocus>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="asunto_ticket" class="col-md-4 col-form-label text-md-right">Detalle de Ticket</label>
+                <div class="col-md-6">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-4" align="center">
+                <button type="submit" class="btn btn-success">Crear Ticket</button>
+                <button type="reset" class="btn btn-warning">Resetear</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+

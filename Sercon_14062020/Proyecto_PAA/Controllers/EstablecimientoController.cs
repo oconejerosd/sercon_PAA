@@ -30,7 +30,6 @@ namespace Proyecto_PAA.Controllers
             var establecimientos = db.Establecimientos.OrderBy(x => x.EstablecimientoNombre).ToList();
             vm.Establecimientos = establecimientos;
             return View(vm);
-
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -19,12 +19,14 @@
 
         // Agregue un DbSet para cada tipo de entidad que desee incluir en el modelo. Para obtener más información 
         // sobre cómo configurar y usar un modelo Code First, vea http://go.microsoft.com/fwlink/?LinkId=390109.
+        public virtual DbSet<Requerimiento> Requerimientos { get; set; }
         public virtual DbSet<Establecimiento> Establecimientos { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
-
        
+
+
 
     }
 

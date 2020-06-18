@@ -1,0 +1,28 @@
+﻿@model Proyecto_PAA.ViewModels.RequerimientosViewModel
+@{
+    ViewBag.Title = "Registro de Requerimientos";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3>Registro de Requerimientos</h3>
+    </div>
+    <div class="card-body">
+        <form action="/requerimiento/Update" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="RequerimientoId" value="@Model.RequerimientoId" class="form-control" />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <label>Requerimiento:</label>
+                <input type="text" name="RequerimientoTipo" value="@Model.RequerimientoTipo" class="form-control" />
+                @Html.ValidationMessageFor(m => m.RequerimientoTipo, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-info">Actualizar <i class="fa fa-save"></i></button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+

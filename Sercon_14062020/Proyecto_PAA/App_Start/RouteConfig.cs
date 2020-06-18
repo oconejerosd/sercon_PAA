@@ -19,10 +19,6 @@ namespace Proyecto_PAA
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            // UsersController -> elantojo.cl/users/
-
-            // usersController create() -> elantojo.cl/users/create
-            // UserController index(int id) elantojo.cl/users/1 
         }
     }
 }
