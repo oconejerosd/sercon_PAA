@@ -48,7 +48,7 @@ namespace Proyecto_PAA.Controllers
             LlenarCbEstablecimientos();
             if (ModelState.IsValid)
             {
-                if (db.Users.Any(x => x.Email == model.Email)) // select * from users where email = leonardo.norambuena@inacap.cl
+                if (db.Users.Any(x => x.Email == model.Email))
                 {
                     ViewData["ErrorMessage"] = "El mail ya se encuentra registrado";
                     return View();

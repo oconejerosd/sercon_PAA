@@ -1,21 +1,21 @@
-﻿@model Proyecto_PAA.ViewModels.RequerimientosViewModel
+﻿@model Proyecto_PAA.ViewModels.PrioridadViewModel
 @{
-    ViewBag.Title = "Registro de Requerimientos";
+    ViewBag.Title = "Registro de Prioridades";
     //List<SelectListItem> establecimientos = (List<SelectListItem>)ViewBag.establecimientos;
 }
 <br />
 <div class="card">
     <div class="card-header">
-        <h3>Registro de Tipo de Requerimientos</h3>
+        <h3>Registro de Tipo de Prioridades</h3>
     </div>
     <div class="card-body">
-        <form action="/requerimiento/Crear" method="post">
+        <form action="/prioridad/Crear" method="post">
             @Html.AntiForgeryToken()
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="form-group">
-                <label>Requerimiento:</label>
-                <input type="text" name="RequerimientoTipo" value="@Model.RequerimientoTipo" class="form-control" />
-                @Html.ValidationMessageFor(m => m.RequerimientoTipo, "", new { @class = "text-danger" })
+                <label>Tipo de Prioridad:</label>
+                <input type="text" name="PrioridadTipo" value="@Model.PrioridadTipo" class="form-control" />
+                @Html.ValidationMessageFor(m => m.PrioridadTipo, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-block">Guardar <i class="fa fa-save"></i></button>
@@ -24,27 +24,26 @@
     </div>
 </div>
 <br />
-<h3 class="card-title" align="center">Listado de Requerimientos</h3>
+<h3 class="card-title" align="center">Listado de Prioridades</h3>
 <div class="table-responsive">
     <table class="table table-bordered table-hover table-striped">
         <thead class="thead-darker">
             <tr>
                 <th>#</th>
-                <th>Tipo de Requerimiento</th>
+                <th>Tipo de Prioridad</th>
                 <th>Acciones</th>
-
             </tr>
         </thead>
-        @foreach (var item in Model.Requerimientos)
+        @foreach (var item in Model.Prioridades)
         {
             <tr>
-                <td>@item.RequerimientoId</td>
-                <td>@item.RequerimientoTipo</td>
+                <td>@item.PrioridadId</td>
+                <td>@item.PrioridadTipo</td>
                 <td>
-                    <a href="/Requerimiento/Delete/@item.RequerimientoId" class="btn btn-danger btn-sm" title="Eliminar">
+                    <a href="/prioridad/Delete/@item.PrioridadId" class="btn btn-danger btn-sm" title="Eliminar">
                         <i class="fa fa-trash"></i>
                     </a>
-                    <a href="/Requerimiento/Update/@item.RequerimientoId" class="btn btn-info btn-sm" title="Modificar">
+                    <a href="/prioridad/Update/@item.PrioridadId" class="btn btn-info btn-sm" title="Modificar">
                         <i class="fa fa-pencil"></i>
                     </a>
                 </td>
@@ -58,4 +57,3 @@
     </svg>
     <a href="/Admin/Index">Volver</a>
 </div>
-

@@ -2,15 +2,15 @@
 @{
     ViewBag.Title = "Inicio de Sesión";
 }
-
-<div class="modal-dialog text-center">
+<br />
+<div class="card">
     <div class="col-sm-12">
-        <div class="modal-content">
-            <div class="col-12">
+        
+            <div align="center">
                 <br />
                 <img src="../images/man.png"/>
             </div>
-             <form class="col-12" action="/auth/SignIn" method="post">
+             <form class="col-sm-12" action="/auth/SignIn" method="post" align="center">
                  <br />
                     @Html.AntiForgeryToken()
                     <div class="form-group" id="user-group">
@@ -19,10 +19,10 @@
                     <div class="form-group" id="contrasena-group">
                         <input type="password" class="form-control" placeholder="Contrasena" name="Password" />
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                    <button type="submit" class="btn btn-info"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
                  <p></p><br />
                 </form>
                 
-</div>
+        
     </div>
 </div>

@@ -1,76 +1,68 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
-<div class="row">
-    <div class="card">
-        <div class="card-header">
-            <h3 align="center">Ingreso de Ticket</h3>
-        </div>
-        <div class="card-body">
-            <form action="/establecimiento/Crear" method="post">
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="form-group">
-                    <label>Tipo de Requerimiento:</label>
-                    <input type="text" name="EstablecimientoRbd" value="@Model.EstablecimientoRbd" class="form-control" />
-                    @Html.ValidationMessageFor(m => m.EstablecimientoRbd, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    <label>Asunto Ticket:</label>
-                    <input type="text" name="EstablecimientoDirecccion" value="@Model.EstablecimientoDirecccion" class="form-control" />
-                    @Html.ValidationMessageFor(m => m.EstablecimientoDirecccion, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    <label>Detalle Ticket:</label>
-                    <input type="text" name="EstablecimientoFono" value="@Model.EstablecimientoFono" class="form-control" />
-                    @Html.ValidationMessageFor(m => m.EstablecimientoFono, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-block">Guardar <i class="fa fa-save"></i></button>
-
-                </div>
-
-            </form>
-        </div>
+<br />
+<div class="card">
+    <div class="card-header">
+        <h3 align="center">Ingreso de Ticket</h3>
     </div>
-</div>
-
-
-<div class="row justify-content-center">
-    <div class="col-md-8">
-
-        <form action="ticket2.html" method="post">
-            <div class="form-group row">
-                <br>
-                <label for="asunto_ticket" class="col-md-4 col-form-label text-md-right">Tipo de Requerimiento</label>
-                <div class="col-md-6">
-                    <select id="selectbasic" name="selectbasic" class="form-control">
-                        <option>Internet</option>
-                        <option>Equipamiento</option>
-                        <option>Plataformas</option>
-                        <option>Redes</option>
-                    </select>
-                </div>
+    <div class="card-body">
+        <form action="#" method="post">
+            <div class="form-group">
+                <label>Tipo de Requerimiento:</label>
+                <input type="text" name="EstablecimientoRbd" value="" class="form-control" />
             </div>
-            <div class="form-group row">
-                <label for="asunto_ticket" class="col-md-4 col-form-label text-md-right">Asunto de Ticket</label>
-                <div class="col-md-6">
-                    <input type="text" id="asunto_ticket" class="form-control" name="asunto_ticket" required autofocus>
-                </div>
+            <div class="form-group">
+                <label>Asunto Ticket:</label>
+                <input type="text" name="EstablecimientoDirecccion" value="" class="form-control" />
             </div>
-            <div class="form-group row">
-                <label for="asunto_ticket" class="col-md-4 col-form-label text-md-right">Detalle de Ticket</label>
-                <div class="col-md-6">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
+            <div class="form-group">
+                <label>Detalle Ticket:</label>
+                <input type="text" name="EstablecimientoFono" value="" class="form-control" />
             </div>
-            <div class="col-md-6 offset-md-4" align="center">
-                <button type="submit" class="btn btn-success">Crear Ticket</button>
-                <button type="reset" class="btn btn-warning">Resetear</button>
-
+            <div>
+                <button type="submit" class="btn btn-info btn-block"><i class="fas fa-sign-in-alt"></i>Ingresar</button>
+                <button type="reset" class="btn btn-danger btn-block"><i class="fas fa-sign-in-alt"></i>Borrar</button>
             </div>
         </form>
+    </div>
+</div>
+<br />
+<div class="card-header">
+    <h3 class="card-title" align="center">Registro de Ticket</h3>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-darker">
+            <tr>
+                <th>#</th>
+                <th>Requerimiento</th>
+                <th>Asunto Ticket</th>
+                <th>Detalle Ticket</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="#" class="btn btn-danger btn-sm" title="Eliminar">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+                <a href="#" class="btn btn-info btn-sm" title="Modificar">
+                    <i class="fa fa-pencil"></i>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <div class="bottom-left" align="right">
+        <svg class="bi bi-arrow-left-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.646 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L6.207 7.5H11a.5.5 0 0 1 0 1H6.207l2.147 2.146z" />
+        </svg>
+        <a href="/Admin/Index">Volver</a>
     </div>
 </div>
 
