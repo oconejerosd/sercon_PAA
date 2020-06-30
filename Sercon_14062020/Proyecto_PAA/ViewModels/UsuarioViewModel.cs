@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto_PAA.ViewModels
 {
-    public class RegisterViewModel
+    public class UsuarioViewModel
     {
         public string q { get; set; }
         public List<Establecimiento> Establecimientos { get; set; }
 
-        public IEnumerable<User> Users { get; set; }
+        public List<User> Users { get; set; }
 
         [Required]
         [MaxLength(50)] // FirstName Varchar(50)
@@ -25,13 +25,7 @@ namespace Proyecto_PAA.ViewModels
         [MaxLength(50)]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]
-        [Display(Name = "Contraseña")]
-        public string Password { get; set; }
-        [Required]
-        [Compare("Password")]
-        [Display(Name = "Confirme Contraseña")]
-        public string ConfirmPassword { get; set; }
+        
         [Required]
         public int RoleId { get; set; }
 

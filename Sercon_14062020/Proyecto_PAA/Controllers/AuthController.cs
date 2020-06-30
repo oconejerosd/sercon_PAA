@@ -18,9 +18,9 @@ namespace Proyecto_PAA.Controllers
             db = new ApplicationDbContext(); // Graba en la BD
         }
         // GET: Auth
-        public ActionResult Index(string q)
+        public ActionResult Listado(string q)
         {
-            var usuarios = db.Users.OrderBy(x => x.UserId).ToList();
+            var usuarios = db.Users.OrderBy(x => x.UserId);
             RegisterViewModel vm = new RegisterViewModel();
             vm.Users = usuarios;
             //LlenarCbEstablecimientos();
@@ -91,7 +91,7 @@ namespace Proyecto_PAA.Controllers
                 }
                 if (role.RoleName == StringHelper.ROLE_CLIENT)
                 {
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Index", "Admin");
                 }
             }
 
@@ -185,6 +185,21 @@ namespace Proyecto_PAA.Controllers
                 };
             });
             ViewBag.establecimientos = establecimientos;
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var usuarios = db.Users.OrderBy(x => x.UserId).ToList();
+            var usuario = usuarios.FirstOrDefault(x => x.UserId == id);
+            if (id == 0 || usuarios == null)
+            {
+                TempData["ErrorMessage"] = "El Usuario no fue encontrado";
+                return RedirectToAction("Index");
+            }
+            db.Users.Remove(usuario);
+            db.SaveChanges();
+            TempData["SuccessMessage"] = "Usuario eliminado correctamente";
+            return RedirectToAction("Listado", "Auth");
         }
         List<EstablecimientoViewModel> lista = null;
     }

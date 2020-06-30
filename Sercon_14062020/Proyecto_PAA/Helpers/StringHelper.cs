@@ -9,7 +9,7 @@ namespace Proyecto_PAA.Helpers
     {
         public const string ROLE_ADMINISTRATOR = "Administrador";
 
-        public const string ROLE_CLIENT = "Cliente";
+        public const string ROLE_CLIENT = "Usuario";
 
         public const string ROLE_TECH = "Técnico";
     }

@@ -116,6 +116,8 @@
     <Content Include="images\usuario1.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -152,15 +154,25 @@
     <Compile Include="Migrations\202006190446126_creaciontablaprioridad.Designer.cs">
       <DependentUpon>202006190446126_creaciontablaprioridad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006300045384_ticket.cs" />
+    <Compile Include="Migrations\202006300045384_ticket.Designer.cs">
+      <DependentUpon>202006300045384_ticket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300548502_bdatos.cs" />
+    <Compile Include="Migrations\202006300548502_bdatos.Designer.cs">
+      <DependentUpon>202006300548502_bdatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Establecimiento.cs" />
+    <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\Prioridad.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Requerimiento.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +182,8 @@
     <Compile Include="ViewModels\ProductsViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\RequerimientoViewModel.cs" />
+    <Compile Include="ViewModels\TicketViewModel.cs" />
+    <Compile Include="ViewModels\UsuarioViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -193,6 +207,8 @@
     <Content Include="Views\Requerimiento\Update.cshtml" />
     <Content Include="Views\Prioridad\Index.cshtml" />
     <Content Include="Views\Prioridad\Update.cshtml" />
+    <Content Include="Views\Auth\Listado.cshtml" />
+    <Content Include="Views\User\Nuevo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Ticket\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006160505320_iniciosistema.resx">
@@ -212,6 +229,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006190446126_creaciontablaprioridad.resx">
       <DependentUpon>202006190446126_creaciontablaprioridad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300045384_ticket.resx">
+      <DependentUpon>202006300045384_ticket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300548502_bdatos.resx">
+      <DependentUpon>202006300548502_bdatos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

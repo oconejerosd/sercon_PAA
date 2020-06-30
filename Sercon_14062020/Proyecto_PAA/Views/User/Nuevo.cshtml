@@ -1,0 +1,21 @@
+﻿@model Ticket 
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>
+    <a style="float:right;color:green" href="@Url.Action("Index","User")"><i class="fas fa-arrow-circle-left"></i></a>
+    Nuevo Ticket
+</h2>
+<hr />
+
+@using (Html.BeginForm("Nuevo","User", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Fecha de Generacion:</label>
+        @Html.TextBoxFor(m=> m.FechaGeneracion, new {@class="form-control" })
+    </div>
+}
+
+
+

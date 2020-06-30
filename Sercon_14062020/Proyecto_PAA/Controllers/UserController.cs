@@ -1,4 +1,5 @@
 ﻿using Proyecto_PAA.Helpers;
+using Proyecto_PAA.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +30,16 @@ namespace Proyecto_PAA.Controllers
             }
             return false;
         }
+        public ActionResult Nuevo(string q)
+        {
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                var listado = context.Tickets.ToList();
+                return View(listado);
+            }
+
+
+        }
+
     }
 }

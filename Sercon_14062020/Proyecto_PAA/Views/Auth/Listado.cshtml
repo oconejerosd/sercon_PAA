@@ -1,0 +1,48 @@
+﻿@model Proyecto_PAA.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>
+
+    Listado de Usuarios
+</h2>
+<hr />
+<div class="">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Establecimiento</th>
+                <th>Correo Electrónico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>@item.UserId</td>
+                <td>@item.FullName</td>
+                <td>@item.EstablecimientoId</td>
+                <td>@item.Email</td>
+                <td>
+                    <a href="/Establecimiento/Update/@item.EstablecimientoId" class="btn btn-info btn-sm" title="Modificar">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a href="/Auth/Delete/@item.EstablecimientoId" class="btn btn-danger btn-sm" title="Eliminar">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+<div class="bottom-left" align="right">
+    <svg class="bi bi-arrow-left-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.646 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L6.207 7.5H11a.5.5 0 0 1 0 1H6.207l2.147 2.146z" />
+    </svg>
+    <a href="/Admin/Index">Volver</a>
+</div>

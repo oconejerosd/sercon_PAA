@@ -11,14 +11,14 @@
 </head>
 <body>
     @Html.Partial("NavBar")
-    <div class="container">
+    <div class="container"><br />
         @Html.Partial("_Message")
         @RenderBody()
         <hr />
         <footer>
             <div class="modal-footer">
-                <a href="mailto:soporte@cormun.cl">Contáctenos</a></p>
-                <a href="/auth/register">SOS</a></p>
+                <a href="mailto:soporte@cormun.cl">Contáctenos</a>
+                <p><a href="/auth/register">SOS</a></p>
             </div>
             <p align="center">&copy; @DateTime.Now.Year - SerCon Helpdesk</p>
         </footer>
