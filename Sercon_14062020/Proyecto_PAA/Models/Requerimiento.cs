@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto_PAA.Models
 {
@@ -9,6 +10,8 @@ namespace Proyecto_PAA.Models
 
         [Required]
         public string RequerimientoTipo { get; set; }
+
+        public List<Ticket> Tickets { get; set; }
 
     }
 }

@@ -162,6 +162,10 @@
     <Compile Include="Migrations\202006300548502_bdatos.Designer.cs">
       <DependentUpon>202006300548502_bdatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007142324172_14072020.cs" />
+    <Compile Include="Migrations\202007142324172_14072020.Designer.cs">
+      <DependentUpon>202007142324172_14072020.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -209,6 +213,8 @@
     <Content Include="Views\Prioridad\Update.cshtml" />
     <Content Include="Views\Auth\Listado.cshtml" />
     <Content Include="Views\User\Nuevo.cshtml" />
+    <Content Include="Views\Admin\Asignacion.cshtml" />
+    <Content Include="Views\Admin\Informes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006300548502_bdatos.resx">
       <DependentUpon>202006300548502_bdatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007142324172_14072020.resx">
+      <DependentUpon>202007142324172_14072020.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

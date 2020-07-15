@@ -34,8 +34,6 @@ namespace Proyecto_PAA.Models
 
         public DateTime? BirthDate { get; set; }
 
-
-
         public int? Age
         {
             get

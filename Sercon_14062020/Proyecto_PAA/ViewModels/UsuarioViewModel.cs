@@ -22,6 +22,8 @@ namespace Proyecto_PAA.ViewModels
         [Required]
         public int EstablecimientoId { get; set; }
         [Required]
+        public string EstablecimientoNombre { get; set; }
+        [Required]
         [MaxLength(50)]
         [EmailAddress]
         public string Email { get; set; }

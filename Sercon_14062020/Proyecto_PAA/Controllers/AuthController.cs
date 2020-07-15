@@ -18,9 +18,9 @@ namespace Proyecto_PAA.Controllers
             db = new ApplicationDbContext(); // Graba en la BD
         }
         // GET: Auth
-        public ActionResult Listado(string q)
+        public ActionResult Listado(string q) // Listado de Usuarios
         {
-            var usuarios = db.Users.OrderBy(x => x.UserId);
+            var usuarios = db.Users.Include("Establecimiento").OrderBy(x => x.UserId);
             RegisterViewModel vm = new RegisterViewModel();
             vm.Users = usuarios;
             //LlenarCbEstablecimientos();
@@ -33,6 +33,7 @@ namespace Proyecto_PAA.Controllers
             vm.Users = usuarios;
             return View(vm);
         }
+
         [HttpGet]
         public ActionResult Register()
         {

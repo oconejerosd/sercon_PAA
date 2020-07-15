@@ -29,5 +29,21 @@ namespace Proyecto_PAA.Controllers
             }
             return false;
         }
+        public ActionResult Asignacion()
+        {
+           
+                return View();
+           
+
+
+        }
+        public ActionResult Informes()
+        {
+
+            return View();
+
+
+
+        }
     }
 }
