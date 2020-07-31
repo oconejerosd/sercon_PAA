@@ -1,9 +1,13 @@
-﻿using Proyecto_PAA.Helpers;
+﻿using Microsoft.AspNet.Identity;
+using Proyecto_PAA.Helpers;
 using Proyecto_PAA.Models;
 using Proyecto_PAA.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,12 +46,13 @@ namespace Proyecto_PAA.Controllers
             vm.Roles = db.Roles.OrderBy(x => x.RoleName).ToList();
             return View(vm);
         }
+        [Authorize (Roles = "Administrador") ]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
         {
             LlenarCbEstablecimientos();
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 if (db.Users.Any(x => x.Email == model.Email))
                 {
@@ -84,15 +89,15 @@ namespace Proyecto_PAA.Controllers
                 TempData["SuccessMessage"] = "Usuario creado correctamente";
                 if (role.RoleName == StringHelper.ROLE_TECH)
                 {
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Register", "Auth");
                 }
                 if (role.RoleName == StringHelper.ROLE_ADMINISTRATOR)
                 {
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Register", "Auth");
                 }
                 if (role.RoleName == StringHelper.ROLE_CLIENT)
                 {
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("Register", "Auth");
                 }
             }
 
@@ -122,7 +127,7 @@ namespace Proyecto_PAA.Controllers
 
             return true;
         }
-
+        [AllowAnonymous]
         public ActionResult Login()
         {
             Session["UserId"] = null;
@@ -136,18 +141,19 @@ namespace Proyecto_PAA.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignIn(LoginViewModel model)
+        public async Task<ActionResult> SignIn(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = db.Users.FirstOrDefault(x => x.Email == model.Email);
+                User user = await db.Users.FirstOrDefaultAsync(x => x.Email == model.Email);
 
                 if (user != null && CheckPassword(model.Password, user.PasswordHash, user.PasswordSalt))
                 {
+                    await InitOwin(user);
+                    TempData["SuccessMessage"] = $"Bienvenido {user.FullName}";
                     var userRole = db.UserRoles.FirstOrDefault(x => x.UserId == user.UserId);
                     var rol = db.Roles.FirstOrDefault(x => x.RoleId == userRole.RoleId);
                     setSession(user, rol);
-                    TempData["SuccessMessage"] = $"Bienvenido {user.FullName}";
                     if (rol.RoleName == StringHelper.ROLE_TECH)
                     {
                         return RedirectToAction("Index", "Tecnico");
@@ -156,7 +162,12 @@ namespace Proyecto_PAA.Controllers
                     {
                         return RedirectToAction("Index", "Admin");
                     }
-                    return RedirectToAction("Index", "User"); //json
+                    else
+                    {
+                        return RedirectToAction("Index", "User");
+                    }
+                    
+                   
                 }
 
                 TempData["ErrorMessage"] = "Inicio de sesión incorrecto";
@@ -168,6 +179,41 @@ namespace Proyecto_PAA.Controllers
             return RedirectToAction("Login");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignOut(LoginViewModel model)
+        {
+
+            var context = Request.GetOwinContext();
+            var authManager = context.Authentication;
+
+            authManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        private async Task InitOwin(User user)
+        {
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.Email),
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim("FullName", user.FullName),
+
+            };
+            var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
+
+            var roles = await db.UserRoles.Where(x => x.UserId == user.UserId).Select(x => x.Role).ToListAsync();
+            foreach (var role in roles)
+                identity.AddClaim(new Claim(ClaimTypes.Role, role.RoleName));
+
+            var context = Request.GetOwinContext();
+            var authManager = context.Authentication;
+
+            authManager.SignIn(identity);
+
+        }
+        [Authorize(Roles ="Administrador")]
         public void LlenarCbEstablecimientos()
         {
             lista = (from f in db.Establecimientos

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Proyecto_PAA.Controllers
 {
+    [Authorize]
     public class TecnicoController : Controller
     {
         // GET: Tecnico

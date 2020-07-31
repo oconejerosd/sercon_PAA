@@ -13,5 +13,12 @@ namespace Proyecto_PAA.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+        public ActionResult Autores()
+        {
+            return View();
+        }
     }
+
+
 }

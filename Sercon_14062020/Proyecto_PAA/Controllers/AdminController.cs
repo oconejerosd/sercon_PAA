@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Proyecto_PAA.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class AdminController : Controller
     {
         // GET: Admin
@@ -30,19 +31,12 @@ namespace Proyecto_PAA.Controllers
             return false;
         }
         public ActionResult Asignacion()
-        {
-           
+        {  
                 return View();
-           
-
-
         }
         public ActionResult Informes()
         {
-
             return View();
-
-
 
         }
     }

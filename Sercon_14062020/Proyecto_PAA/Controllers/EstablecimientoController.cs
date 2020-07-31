@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Proyecto_PAA.Controllers
 {
+    [Authorize]
     public class EstablecimientoController : Controller
     {
         private readonly ApplicationDbContext db;

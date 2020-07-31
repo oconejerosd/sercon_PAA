@@ -1,46 +1,31 @@
-﻿using Proyecto_PAA.Helpers;
-using Proyecto_PAA.Models;
+﻿using Proyecto_PAA.Models;
 using Proyecto_PAA.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Proyecto_PAA.Controllers
 {
-    
-    public class UserController : Controller
+    public class TicketController : Controller
     {
         private ApplicationDbContext context = new ApplicationDbContext();
-        // GET: User
+        // GET: Ticket
         public ActionResult Index()
         {
-            if (checkUser() == false)
-            {
-                return RedirectToAction("Login", "User");
-            }
             var listado = context.Tickets;
             return View(listado);
-           
-        }
-        public bool checkUser()
-        {
-            if (Session["RolName"] != null)
-            {
-                if (Session["RolName"].ToString() == StringHelper.ROLE_CLIENT)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
         [HttpGet]
         public ActionResult Nuevo()
         {
             var viewmodel = new TicketViewModel();
+            viewmodel.Requerimientos = context.Requerimientos.ToList();
             viewmodel.Estados = context.Estados.ToList();
             viewmodel.Users = context.Users.ToList();
+            viewmodel.Prioridades = context.Prioridades.ToList();
             return View(viewmodel);
-
-
         }
         [HttpPost]
         public ActionResult Nuevo(Ticket ticket)
@@ -50,11 +35,7 @@ namespace Proyecto_PAA.Controllers
 
             return RedirectToAction("Index");
         }
-        public ActionResult Listado()
-        {
-            return View();
-        }
-        
 
     }
+    
 }

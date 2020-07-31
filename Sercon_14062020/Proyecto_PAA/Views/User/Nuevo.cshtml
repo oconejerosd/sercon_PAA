@@ -1,21 +1,35 @@
-﻿@model Ticket 
+﻿@model TicketViewModel
 @{
     ViewBag.Title = "Nuevo";
 }
-
-<h2>
-    <a style="float:right;color:green" href="@Url.Action("Index","User")"><i class="fas fa-arrow-circle-left"></i></a>
-    Nuevo Ticket
-</h2>
-<hr />
-
-@using (Html.BeginForm("Nuevo","User", FormMethod.Post))
-{
-    <div class="form-group">
-        <label>Fecha de Generacion:</label>
-        @Html.TextBoxFor(m=> m.FechaGeneracion, new {@class="form-control" })
+<div class="card">
+    <div class="card-header">
+        <h3 align="center">Ingreso de Ticket</h3>
     </div>
-}
+    <div class="card-body">
+        @using (Html.BeginForm("Nuevo", "User", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Fecha de Generación</label>
+                @Html.TextBoxFor(m => m.Ticket.FechaGeneracion, new { @class = "form-control", @required = "required", @type = "date" })
+            </div>
+            <div class="form-group">
+                <label>Descripción</label>
+                @Html.TextAreaFor(m => m.Ticket.Descripcion, new { @class = "form-control" })
+            </div>
+            <div>
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        }
+    </div>
+</div>
 
+
+<div class="bottom-left" align="right">
+    <svg class="bi bi-arrow-left-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.646 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L6.207 7.5H11a.5.5 0 0 1 0 1H6.207l2.147 2.146z" />
+    </svg>
+    <a href="/Admin/Index">Volver</a>
+</div>
 
 

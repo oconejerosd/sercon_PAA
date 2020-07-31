@@ -1,43 +1,23 @@
 ﻿using Proyecto_PAA.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
+using System.Linq;
+using System.Web;
 
 namespace Proyecto_PAA.ViewModels
 {
     public class TicketViewModel
     {
-        public string q { get; set; }
-        
-        public IEnumerable<Ticket> Tickets { get; set; }
+        public Ticket Ticket { get; set; }
 
-        [Required]
-        public System.DateTime FechaGeneracion { get; set; }
-        [Required]
-        [MaxLength(50)]
-        public string LastName { get; set; }
+        public List<Ticket> Tickets { get; set; }
+        public List<Estado> Estados { get; set; }
+        public List<Requerimiento> Requerimientos { get; set; }
+        public List<Prioridad> Prioridades { get; set; }
+        public List<User> Users { get; set; }
+        public List<Establecimiento> Establecimientos { get; set; }
+        public List<UserRole> UserRoles { get; set; }
+        public List<Role> Roles { get; set; }
 
-        [Required]
-        public int idEstado { get; set; }
-        public Estado Estado { get; set; }
-
-        [Required]
-        public int idRequerimiento { get; set; }
-        public Requerimiento Requerimiento { get; set; }
-
-        [Required]
-        public int PrioridadId { get; set; }
-        public Prioridad Prioridad { get; set; }
-
-        [Required]
-        public int UserId { get; set; }
-        public User User { get; set; }
-
-        [Required]
-        [MaxLength(8000)]
-        public string Descripcion { get; set; }
-
-        [MaxLength(8000)]
-        public string Solucion { get; set; }
     }
 }

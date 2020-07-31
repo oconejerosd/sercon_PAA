@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto_PAA.ViewModels
 {
-    public class UsuarioViewModel
+    public class UsuariosViewModel
     {
         public string q { get; set; }
         public List<Establecimiento> Establecimientos { get; set; }
 
         public List<User> Users { get; set; }
-
+        public int UserId { get; set; }
         [Required]
         [MaxLength(50)] // FirstName Varchar(50)
         [Display(Name = "Nombre")]

@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>
     <a style="float:right;color:green" href="@Url.Action("Nuevo","Ticket")">
         <i class="fas fa-plus-circle"></i>
@@ -17,7 +16,7 @@
             <th>Fecha</th>
             <th>Estado</th>
             <th>Usuario</th>
-            
+            <th>Requerimiento</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -29,6 +28,7 @@
                 <td>@ticket.FechaGeneracion</td>
                 <td>@ticket.Estado.Nombre</td>
                 <td>@ticket.User.FullName</td>
+                <td>@ticket.Requerimiento.RequerimientoTipo</td>
                 <td style="width:50px">
                     <a href="@Url.Action("Detalle","Ticket", new { id=ticket.id})" title="Ver Detalle" style="color:blue"><i class="far fa-eye"></i></a>
                     <a href="@Url.Action("Actualizar","Ticket", new { id=ticket.id})" title="Actualizar" style="color:green"><i class="fas fa-edit"></i></a>
@@ -72,11 +72,3 @@
     }
 </script>
 
-
-
-<div class="bottom-left" align="right">
-    <svg class="bi bi-arrow-left-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.646 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L6.207 7.5H11a.5.5 0 0 1 0 1H6.207l2.147 2.146z" />
-    </svg>
-    <a href="/Admin/Index">Volver</a>
-</div>
